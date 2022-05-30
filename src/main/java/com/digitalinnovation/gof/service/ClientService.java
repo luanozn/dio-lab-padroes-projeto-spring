@@ -6,7 +6,7 @@ public interface ClientService {
 
     Iterable<Client> findAll();
 
-    Client findById();
+    Client findById(Long id);
 
     void insert(Client client);
 

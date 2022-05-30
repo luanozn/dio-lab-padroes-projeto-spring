@@ -1,16 +1,15 @@
 package com.digitalinnovation.gof.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Client {
-
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private Long id;
+
     private String name;
+
     @ManyToOne
     private Adress address;
 

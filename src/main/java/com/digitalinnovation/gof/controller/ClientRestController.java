@@ -1,7 +1,7 @@
 package com.digitalinnovation.gof.controller;
 
 import com.digitalinnovation.gof.model.Client;
-import com.digitalinnovation.gof.service.ClientService;
+import com.digitalinnovation.gof.service.impl.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class ClientRestController {
 
     @Autowired
-    private ClientService clientService;
+    private ClientServiceImpl clientService;
 
     @GetMapping
     public ResponseEntity<Iterable<Client>> findAll(){
@@ -19,8 +19,8 @@ public class ClientRestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Client> findById(){
-        return ResponseEntity.ok(clientService.findById());
+    public ResponseEntity<Client> findById(Long id){
+        return ResponseEntity.ok(clientService.findById(id));
     }
 
     @PostMapping
@@ -35,6 +35,7 @@ public class ClientRestController {
         return ResponseEntity.ok(client);
     }
 
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         clientService.delete(id);
         return ResponseEntity.ok().build();

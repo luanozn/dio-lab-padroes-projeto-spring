@@ -1,4 +1,6 @@
 package com.digitalinnovation.gof.model;
 
-public class AdressRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface AdressRepository extends CrudRepository<Adress, String> {
 }
